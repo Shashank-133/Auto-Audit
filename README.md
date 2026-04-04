@@ -385,5 +385,3 @@ Watch AutoAudit AI in action — full 3-minute walkthrough showing invoice uploa
  Shashank Gupta
  Nishita Goyal
  Gunika Kharbanda
-
-Built for **ET AI Hackathon 2026** | Track 3: Cost Intelligence & Autonomous Action
