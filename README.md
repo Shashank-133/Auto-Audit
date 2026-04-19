@@ -1,7 +1,7 @@
 ![AutoAudit AI Dashboard](docs/Image%201.jpeg)
 
 # AutoAudit AI
-### Autonomous Financial Compliance — ET AI Hackathon 2026 | Track 3: Cost Intelligence & Autonomous Action
+### Autonomous Financial Compliance 
 
 > **Not a chatbot. A system that completes real enterprise work — autonomously.**
 
@@ -380,8 +380,3 @@ Watch AutoAudit AI in action — full 3-minute walkthrough showing invoice uploa
 [Watch Demo Video on Google Drive](https://drive.google.com/file/d/1rexrb4vlKNr06jKCMUso2l9_-K_CrjXe/view?usp=sharing)
 
 
-## Team Members
- Dhruvi Srivastava
- Shashank Gupta
- Nishita Goyal
- Gunika Kharbanda
