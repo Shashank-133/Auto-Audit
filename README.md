@@ -372,6 +372,12 @@ Auto-Audit/
 
 ---
 ---
+## 🌐 Live Demo
+
+| | Link |
+|--|------|
+| **Live App** | [https://auto-audit-alpha.vercel.app](https://auto-audit-alpha.vercel.app) |
+| **API Docs** | [https://auto-audit.onrender.com/docs](https://auto-audit.onrender.com/docs) |
 
 ## Demo Video
 
