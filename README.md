@@ -383,6 +383,6 @@ Auto-Audit/
 
 Watch AutoAudit AI in action — full 3-minute walkthrough showing invoice upload, agent pipeline, violation detection, auto-fix, and error recovery.
 
-[Watch Demo Video on Google Drive](https://drive.google.com/file/d/1rexrb4vlKNr06jKCMUso2l9_-K_CrjXe/view?usp=sharing)
+[Watch Demo Video on Google Drive](https://drive.google.com/file/d/1rexrb4vlKNr06jKCMUso2l9_-K_CrjXe/view?usp=drive_link)
 
 
