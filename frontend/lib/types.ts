@@ -25,12 +25,10 @@ export interface Violation {
   description: string;
   severity: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
   message: string;
-  // Investigator fields
   cause?: string;
   confidence?: number;
   risk_score?: number;
   action?: string;
-  // Extra rule-specific fields
   expected_gst?: number;
   actual_gst?: number;
   limit?: number;
@@ -79,10 +77,12 @@ export interface AuditReport {
 }
 
 export interface AuditResponse {
-  status: "success" | "error";
+  status: "success" | "error" | "partial";
   filename: string;
   pipeline_duration_ms: number;
   stage_timings_ms: Record<string, number>;
+  duplicate_detected?: boolean;
+  duplicate_info?: unknown;
   audit_report: AuditReport;
   raw_invoice: Invoice;
   compliance: ComplianceResult;
@@ -94,6 +94,7 @@ export interface AuditResponse {
 export type AgentName =
   | "Intake"
   | "Compliance"
+  | "DuplicateChecker"
   | "Investigator"
   | "Remediator"
   | "Auditor"
@@ -107,4 +108,45 @@ export interface AgentLogEntry {
   level: LogLevel;
   message: string;
   timestamp: string;
+}
+
+// ─── WebSocket Events ────────────────────────────────────────────────────────
+
+export interface WsLogEvent {
+  type: "log";
+  agent: AgentName;
+  level: LogLevel;
+  message: string;
+  timestamp: string;
+}
+
+export interface WsPipelineEvent {
+  type: "event";
+  event: string;
+  [key: string]: unknown;
+}
+
+export type WsEvent = WsLogEvent | WsPipelineEvent;
+
+// ─── Auth (mock) ─────────────────────────────────────────────────────────────
+
+export interface User {
+  email: string;
+  fullName: string;
+  company: string;
+  createdAt: string;
+}
+
+// ─── Audit Trail (from backend /demo/audit-trail) ────────────────────────────
+
+export interface AuditTrailRecord {
+  invoice_number: string;
+  vendor_name: string;
+  total_amount: number;
+  audit_status: AuditReport["audit_status"];
+  violations: number;
+  fixed: number;
+  escalated: number;
+  timestamp: string;
+  filename?: string;
 }

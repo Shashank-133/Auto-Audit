@@ -1,22 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0f1e;
-  --surface: #0f1629;
-  --surface-2: #151d35;
-  --surface-3: #1a2340;
-  --border: #1e2d4a;
-  --border-bright: #2a3f6a;
-  --text-primary: #e8edf8;
-  --text-secondary: #8b9cc4;
-  --text-muted: #4a5a7a;
-  --accent-blue: #3b82f6;
-  --accent-blue-bright: #60a5fa;
-  --accent-cyan: #06b6d4;
-  --accent-green: #10b981;
-  --accent-amber: #f59e0b;
-  --accent-red: #ef4444;
-  --accent-purple: #8b5cf6;
+  /* ─── Landing page (warm cream aesthetic) ──────────────────────────── */
+  --cream-bg:        #FAF5EA;    /* main landing background */
+  --cream-bg-2:      #F4EDDD;    /* alt section background */
+  --cream-card:      #FFFFFF;    /* card surface */
+  --cream-border:    #E8DFCB;    /* subtle warm divider */
+  --cream-border-2:  #D8CDB5;    /* slightly stronger border */
+  --ink:             #1A1A1A;    /* near-black ink */
+  --ink-2:           #2C2A26;    /* warm dark text */
+  --ink-muted:       #6B655C;    /* muted body text */
+  --ink-light:       #9A938A;    /* hint / placeholder */
+  --accent-blue:     #4A8BC7;    /* small accent (logo, badge dot) */
+
+  /* ─── Dashboard (kept from earlier work) ───────────────────────────── */
+  --primary-soft-yellow: #FFF9D2;
+  --primary-cream:       #FFEBCC;
+  --primary-sky-blue:    #BFDDF0;
+  --primary-ocean-blue:  #8CC0EB;
+  --primary-ocean-blue-dark: #5BA3DC;
+
+  --text-dark:   #2C3E50;
+  --text-medium: #5A6C7D;
+  --text-light:  #8E9BAC;
+
+  --success-green:  #52C41A;
+  --warning-orange: #FA8C16;
+  --error-red:      #F5222D;
+  --info-blue:      #1890FF;
+
+  --bg-primary:   #FFFFFF;
+  --bg-secondary: #FFF9D2;
+  --bg-tertiary:  #F8FAFB;
+
+  --border-light:  #E5EAF0;
+  --border-medium: #BFDDF0;
+}
+
+@theme inline {
+  /* cream palette */
+  --color-cream-bg:        #FAF5EA;
+  --color-cream-bg-2:      #F4EDDD;
+  --color-cream-border:    #E8DFCB;
+  --color-cream-border-2:  #D8CDB5;
+  --color-ink:             #1A1A1A;
+  --color-ink-2:           #2C2A26;
+  --color-ink-muted:       #6B655C;
+  --color-ink-light:       #9A938A;
+
+  /* dashboard palette */
+  --color-soft-yellow: #FFF9D2;
+  --color-cream:       #FFEBCC;
+  --color-sky-blue:    #BFDDF0;
+  --color-ocean-blue:  #8CC0EB;
+  --color-ocean-blue-dark: #5BA3DC;
+  --color-text-dark:   #2C3E50;
+  --color-text-medium: #5A6C7D;
+  --color-text-light:  #8E9BAC;
+  --color-success:     #52C41A;
+  --color-warning:     #FA8C16;
+  --color-error:       #F5222D;
+  --color-info:        #1890FF;
+  --color-bg-tertiary: #F8FAFB;
+  --color-border-light: #E5EAF0;
+
+  /* fonts */
+  --font-sans:  var(--font-inter);
+  --font-serif: var(--font-serif);
 }
 
 * {
@@ -24,113 +74,153 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--text-primary);
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-dark);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
-/* Scrollbar styling */
+/* Scrollbar — clean and subtle */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--surface);
+  background: var(--bg-tertiary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-bright);
-  border-radius: 3px;
+  background: var(--primary-sky-blue);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-blue);
+  background: var(--primary-ocean-blue);
 }
 
-/* Glow utilities */
-.glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+/* Selection */
+::selection {
+  background: var(--cream-border-2);
+  color: var(--ink);
 }
 
-.glow-green {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
-.glow-red {
-  box-shadow: 0 0 20px rgba(239, 68, 68, 0.15);
+/* Serif italic display class */
+.font-serif-italic {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-/* Animated gradient border */
-.gradient-border {
-  position: relative;
-  background: var(--surface-2);
-  border-radius: 12px;
+.font-serif {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-weight: 400;
 }
 
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: 13px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
-  z-index: -1;
-  opacity: 0.3;
+/* Subtle float for hero image */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
 }
 
-/* Pulse animation for active agents */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+.float-subtle {
+  animation: float 3s ease-in-out infinite;
 }
 
-.pulse-dot {
-  animation: pulse-dot 1.4s ease-in-out infinite;
-}
-
-/* Scan line animation for loading */
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-/* Fade in for log entries */
+/* Fade in up */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.25s ease-out forwards;
+  animation: fadeInUp 0.4s ease-out forwards;
 }
 
-/* Number counter animation */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.count-up {
-  animation: countUp 0.4s ease-out forwards;
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Pulse dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 0%,
+    #EEF3F8 50%,
+    var(--bg-tertiary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
 }
 
 /* Card hover lift */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
 }
 
 .card-hover:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.06);
+}
+
+/* Logo gradient text — kept for dashboard logo only */
+.logo-gradient {
+  background: linear-gradient(135deg, #5BA3DC 0%, #2C3E50 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtle nav hover */
+.nav-link-warm {
+  position: relative;
+  transition: color 200ms ease-in-out;
+}
+
+/* Cream landing-page wrapper */
+.cream-bg {
+  background: var(--cream-bg);
+}
+
+/* Grid overlay (very subtle) for hero */
+.warm-grid {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(26,26,26,0.04) 1px, transparent 0);
+  background-size: 28px 28px;
 }
